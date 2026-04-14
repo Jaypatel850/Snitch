@@ -7,7 +7,6 @@ import { Field } from '@/components/ui/field'
 import { Input } from '@/components/ui/input'
 import { Separator } from '@/components/ui/separator'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Link } from 'react-router-dom'
 import authBg from '@/assets/auth-bg.png'
 const GoogleIcon = () => (
   <svg viewBox="0 0 24 24" className="h-5 w-5">
@@ -391,19 +390,10 @@ export function Auth() {
           </div>
 
           <div className="w-full">
-            <a href="/auth/google" className="block">
-              <Button variant="outline" className="h-14 w-full border-white/10 bg-white/2 hover:bg-white text-amber-50 cursor-pointer transition-all active:scale-[0.98]">
-                <Link to="/auth/google"><GoogleIcon /><span className="ml-2">Continue with Google</span></Link>
-              </Button>
-            </a>
+            <Button asChild variant="outline" className="h-14 w-full border-white/10 bg-white/2 hover:bg-white text-amber-50 cursor-pointer transition-all active:scale-[0.98]">
+              <Link to="api/auth/google"><GoogleIcon /><span className="ml-2">Continue with Google</span></Link>
+            </Button>
           </div>
-
-          <footer className="text-center text-sm text-white/40 leading-relaxed">
-            By continuing, you agree to our{' '}
-            <a href="#" className="font-bold text-white/60 underline underline-offset-4 hover:text-white">Terms of Service</a>
-            {' '}and{' '}
-            <a href="#" className="font-bold text-white/60 underline underline-offset-4 hover:text-white">Privacy Policy</a>.
-          </footer>
         </div>
       </section>
     </main>

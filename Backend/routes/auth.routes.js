@@ -1,5 +1,5 @@
 const passport = require("passport");
-const { registerUser, loginUser } = require("../controller/auth.controller");
+const { registerUser, loginUser ,googleCallback} = require("../controller/auth.controller");
 const middleware = require("../middleware/auth.middleware");
 const {
   validateRegister,
@@ -21,7 +21,6 @@ router.get(
 router.get(
   "/google/callback",
   passport.authenticate("google", { session: false, failureRedirect: "/login" }
-
   )
 ),
   (module.exports = router);
