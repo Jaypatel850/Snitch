@@ -31,4 +31,33 @@ const registerUser = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 }
-module.exports = { register: registerUser };
+const loginUser = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const user = await Register.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ message: "Invalid email" });
+    }
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ message: "Invalid password" });
+    }
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "1d",
+    });
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: true,
+      maxAge: 3600000,
+    });
+    res.status(200).json({ message: "Login successful" });
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+};
+const googleCallback = (req, res) => {
+  console.log("Google OAuth callback hit");
+  console.log("User profile:", req.user);
+  res.redirect("http://localhost:5173/");
+}
+module.exports = { registerUser, loginUser };

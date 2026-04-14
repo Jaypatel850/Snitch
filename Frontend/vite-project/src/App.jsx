@@ -1,9 +1,14 @@
-import React from 'react'
-import {Auth} from './features/auth/pages/Auth'
+import React from "react";
+import { Auth } from "./features/auth/pages/Auth";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 const App = () => {
   return (
-    <Auth />
-  )
-}
+    <BrowserRouter>
+      <Routes>
+        <Route path="/auth" element={<Auth />} />
+      </Routes>
+    </BrowserRouter>
+  );
+};
 
-export default App
+export default App;
