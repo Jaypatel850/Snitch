@@ -20,7 +20,8 @@ router.get(
 );
 router.get(
   "/google/callback",
-  passport.authenticate("google", { session: false, failureRedirect: "/login" }
-  )
-),
-  (module.exports = router);
+  passport.authenticate("google", { session: false, failureRedirect: "/login" }),
+  googleCallback
+);
+
+module.exports = router;

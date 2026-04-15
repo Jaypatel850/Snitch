@@ -60,4 +60,4 @@ const googleCallback = (req, res) => {
   console.log("User profile:", req.user);
   res.redirect("http://localhost:5173/");
 }
-module.exports = { registerUser, loginUser };
+module.exports = { registerUser, loginUser ,googleCallback};

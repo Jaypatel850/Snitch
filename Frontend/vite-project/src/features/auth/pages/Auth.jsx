@@ -391,7 +391,7 @@ export function Auth() {
 
           <div className="w-full">
             <Button asChild variant="outline" className="h-14 w-full border-white/10 bg-white/2 hover:bg-white text-amber-50 cursor-pointer transition-all active:scale-[0.98]">
-              <Link to="api/auth/google"><GoogleIcon /><span className="ml-2">Continue with Google</span></Link>
+              <a href="/api/auth/google"><GoogleIcon /><span className="ml-2">Continue with Google</span></a>
             </Button>
           </div>
         </div>

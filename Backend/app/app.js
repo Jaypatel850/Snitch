@@ -5,9 +5,19 @@ const Route = require("../routes/auth.routes");
 const passport = require("passport");
 const { Strategy: GoogleStrategy } = require("passport-google-oauth20");
 const app = express();
-app.use(passport.initialize());
 
-// Configure Passport to use Google OAuth 2.0 strategy
+
+const corsOptions = {
+  origin: "http://localhost:5173", // Replace with your frontend URL
+  credentials: true,
+  optionsSuccessStatus: 200,
+  methods: ["GET", "POST", "PUT", "DELETE"],
+};
+
+app.use(cors(corsOptions));
+app.use(morgan("combined"));
+app.use(express.json());
+app.use(passport.initialize());
 passport.use(
   new GoogleStrategy(
     {
@@ -22,16 +32,6 @@ passport.use(
     }
   )
 );
-const corsOptions = {
-  origin: "http://localhost:5173", // Replace with your frontend URL
-  optionsSuccessStatus: 200,
-  methods: ["GET", "POST", "PUT", "DELETE"],
-};
-
-app.use(cors(corsOptions));
-app.use(morgan("combined"));
-app.use(express.json());
-
 app.use("/api/auth", Route);
 
 module.exports = app;

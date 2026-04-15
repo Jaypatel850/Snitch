@@ -1,6 +1,6 @@
 import React from "react";
 import { Auth } from "./features/auth/pages/Auth";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 const App = () => {
   return (
     <BrowserRouter>
